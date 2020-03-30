@@ -1,6 +1,5 @@
 .blogcontainer {
-  max-width: 728px;
-  width: 100%;
+  width: 50%;
   margin: 0 auto 10em;
   line-height: 1.6rem;
 }
@@ -29,7 +28,8 @@
   display: block;
   max-width: 100%;
   color: rgb(57, 58, 52);
-  font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+  font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier,
+    monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -106,7 +106,7 @@ code.inline {
   width: 65%;
 }
 
-.inlineImageContainer{
+.inlineImageContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;

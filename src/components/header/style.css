@@ -1,68 +1,154 @@
 .header {
-	height: 100px;;
+  width: 50%;
+  text-align: center;
+  margin-top: 20px;
+  border-bottom: solid 2px rgba(200, 200, 200, 0.3);
+}
+
+.header .profilePicture img {
+  border-radius: 50px;
+  width: 100px;
+}
+
+.header .toggleIcon {
+  width: 18px;
 }
 
 .header h1 {
-	float: left;
-	margin: 0;
-	padding: 0 15px;
-	font-size: 40px;
-	line-height: 100px;
-	font-weight: 400;
-	font-family: 'Courgette', 'Helvetica Neue', arial, sans-serif;;
-	color: #FFC107;
+  margin: 0;
+  font-size: 40px;
+  font-weight: 400;
+  color: #333333;
+  font-family: "Karla", sans-serif;
+  letter-spacing: -3px;
+}
+
+:global .app--dark :local(.header h1) {
+  color: white;
 }
 
 .header nav {
-	float: right;
-	font-size: 100%;
+  font-size: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .header nav a {
-	display: inline-block;
-	height: 56px;
-	line-height: 100px;
-	margin: 0 15px;
-	min-width: 50px;
-	text-align: center;
-	background: rgba(255,255,255,0);
-	text-decoration: none;
-	color: #333;
-	will-change: background-color;
-	transition-property: color;
-	transition-duration: 300ms;
-	text-transform: uppercase;
-	position: relative;
+  display: inline-block;
+  line-height: 1;
+  min-width: 50px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0);
+  text-decoration: none;
+  color: #333;
+  will-change: background-color;
+  transition-property: color;
+  transition-duration: 300ms;
+  position: relative;
+  text-align: left;
+  font-weight: 700;
+}
+
+:global .app--dark :local(.header nav a) {
+  color: white
+}
+
+.header nav a:not(:last-child) {
+  margin: 0 15px;
 }
 
 .header nav a:hover,
 .header nav a:active,
 .header nav a.active {
-	color: #FFC107;
+  color: #ffc107;
 }
 
 .header nav a:after {
-	content: '';
-	width: 0%;
-	border-bottom: 3px solid #FFC107;
-	position: absolute;
-	bottom: -12px;
-	left: 0;
-	transition-duration: width;
-	transition-duration: 300ms;
-
+  content: "";
+  width: 0%;
+  border-bottom: 3px solid #ffc107;
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  transition-duration: width;
+  transition-duration: 300ms;
 }
 
-.header nav a:hover:after, .header nav a.active:after {
-	width: 70%
+.header nav a:hover:after,
+.header nav a.active:after {
+  width: 70%;
+}
+
+.header .menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .personal {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: center;
+}
+
+.header .topHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .personal h4 {
+  margin: 0 3px;
+  font-weight: 400;
+  text-align: left;
+}
+
+:global .app--dark :local(.header .personal h4) {
+  color: white
+}
+
+:global .react-toggle .react-toggle-thumb,
+:global .react-toggle.react-toggle--checked .react-toggle-thumb {
+  border-color: black;
+}
+
+:global .react-toggle-track > div {
+  margin: 2px 0px;
+}
+
+:global .language.react-toggle .react-toggle-track {
+  background-image: url(/assets/br-flag.jpg);
+  background-size: cover;
+  background-position: center;
+  transition: none;
+}
+
+:global .language.react-toggle--checked .react-toggle-track {
+  background-image: url(/assets/uk-flag.png);
+  background-size: cover;
+  background-position: center;
+}
+
+:global .theme.react-toggle .react-toggle-track,
+:global .theme.react-toggle .react-toggle-track:hover {
+  background-color: #333 !important;
+}
+
+:global .theme.react-toggle--checked .react-toggle-track,
+:global .theme.react-toggle--checked .react-toggle-track:hover {
+  background-color: rgb(27, 159, 211) !important;
+}
+
+:global .theme.react-toggle--checked .react-toggle-track-check {
+  left: 4px;
+  top: 1px;
 }
 
 @media all and (max-width: 728px) {
-	.header h1{
-		font-size: 2rem;
-	}
-  .header nav a{
-		line-height: 100px;
-		margin: 0 8px;
+  .header h1 {
+    font-size: 2rem;
+  }
+  .header nav a {
+    line-height: 100px;
+    margin: 0 8px;
   }
 }
