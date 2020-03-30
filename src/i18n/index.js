@@ -1,4 +1,4 @@
-let storageValue = localStorage
+let storageValue = typeof window !== "undefined"
   ? localStorage.getItem("preferred_language")
   : "en-US";
 
