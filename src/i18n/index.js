@@ -1,4 +1,7 @@
-let storageValue = localStorage.getItem("preferred_language");
+let storageValue = localStorage
+  ? localStorage.getItem("preferred_language")
+  : "en-US";
+
 export const getLanguage = () => storageValue || navigator.language || "en-US";
 
 let dictionary = require(`./${getLanguage()}.json`);

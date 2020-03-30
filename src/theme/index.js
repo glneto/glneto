@@ -1,4 +1,6 @@
-let storageValue = localStorage.getItem("preferred_theme");
+let storageValue = localStorage
+  ? localStorage.getItem("preferred_theme")
+  : "light";
 
 export const getTheme = () => storageValue || "light";
 
