@@ -1,9 +1,19 @@
 const netlifyPlugin = require("preact-cli-plugin-netlify");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const imageminMozjpeg = require("imagemin-mozjpeg");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = (config, env) => {
   netlifyPlugin(config);
+  if (env.production)
+    config.plugins.push(
+      new CopyWebpackPlugin([
+        {
+          from: `${__dirname}/src/i18n/dictionary`,
+          to: `${__dirname}/build/dictionary`
+        }
+      ])
+    );
   env.production &&
     !env.ssr &&
     config.plugins.push(

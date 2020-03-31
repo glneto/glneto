@@ -4,10 +4,10 @@ let storageValue = typeof window !== "undefined"
 
 export const getLanguage = () => storageValue || navigator.language || "en-US";
 
-let dictionary = require(`./${getLanguage()}.json`);
+let dictionary = require(`./dictionary/${getLanguage()}.json`);
 
 const setDictionary = () => {
-  dictionary = require(`./${getLanguage()}.json`);
+  dictionary = require(`./dictionary/${getLanguage()}.json`);
 };
 
 export const setLanguage = value => {
