@@ -2,7 +2,13 @@ let storageValue = typeof window !== "undefined"
   ? localStorage.getItem("preferred_language")
   : "en-US";
 
-export const getLanguage = () => storageValue || navigator.language || "en-US";
+export const getLanguage = () => {
+  const lang = storageValue || navigator.language || "en-US";
+  if (lang === 'en') return 'en-US';
+  if (lang !== 'pt-BR' && lang !== 'en-US') return 'en-US'
+
+  return lang;
+}
 
 let dictionary = require(`./dictionary/${getLanguage()}.json`);
 
