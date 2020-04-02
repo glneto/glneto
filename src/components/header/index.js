@@ -9,6 +9,12 @@ import i18n from "../../i18n";
 import { ThemeContext, LanguageContext } from "../app";
 import { useContext } from "preact/hooks";
 
+import GithubIconLight from "../../assets/GitHub-Mark-Light-64px.png";
+import GithubIcon from "../../assets/GitHub-Mark-64px.png";
+
+import TwitterLogoLight from "../../assets/Twitter-Logo-Light.png";
+import TwitterLogo from "../../assets/Twitter-Logo-Blue.png";
+
 const Header = ({ onLanguageChange, onThemeChange }) => {
   const theme = useContext(ThemeContext);
   const language = useContext(LanguageContext);
@@ -19,7 +25,7 @@ const Header = ({ onLanguageChange, onThemeChange }) => {
         <div>
           <Toggle
             class="language"
-            defaultChecked={language === 'en-US'}
+            defaultChecked={language === "en-US"}
             aria-label="Toggle language"
             icons={false}
             onChange={onLanguageChange}
@@ -31,7 +37,7 @@ const Header = ({ onLanguageChange, onThemeChange }) => {
         <div>
           <Toggle
             class="theme"
-            defaultChecked={theme === 'light'}
+            defaultChecked={theme === "light"}
             aria-label="Toggle theme"
             icons={{
               checked: (
@@ -61,12 +67,20 @@ const Header = ({ onLanguageChange, onThemeChange }) => {
           <h4>{i18n("profession")}</h4>
         </div>
         <nav>
-          <Link activeClassName={style.active} href="/about">
-            {i18n('about')}
-          </Link>
-          <Link activeClassName={style.active} href="/contact">
-            {i18n('contact')}
-          </Link>
+          <a href="https://github.com/glneto" target="_blank">
+            <img
+              class={style.github}
+              src={theme === "dark" ? GithubIconLight : GithubIcon}
+              alt="GitHub Icon"
+            />
+          </a>
+          <a href="https://twitter.com/glneto_" target="_blank">
+            <img
+              class={style.twitter}
+              src={theme === "dark" ? TwitterLogoLight : TwitterLogo}
+              alt="GitHub Icon"
+            />
+          </a>
         </nav>
       </div>
     </header>

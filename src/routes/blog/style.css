@@ -24,6 +24,14 @@
   text-decoration: underline;
 }
 
+:global .app--dark :local(.blogbody) {
+  color: white;
+}
+
+:global .app--dark :local(.blogtitle) {
+  color: white;
+}
+
 .blogbody pre code {
   display: block;
   max-width: 100%;

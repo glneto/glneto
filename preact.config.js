@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = (config, env) => {
   netlifyPlugin(config);
-  if (env.production)
+  if (env.production) {
     config.plugins.push(
       new CopyWebpackPlugin([
         {
@@ -14,21 +14,24 @@ module.exports = (config, env) => {
         }
       ])
     );
-  env.production &&
-    !env.ssr &&
-    config.plugins.push(
-      new ImageminPlugin({
-        from: "./build/assets/**",
-        pngquant: {
-          quality: "60"
-        },
-        plugins: [
-          imageminMozjpeg({
-            quality: 50,
-            progressive: true
-          })
-        ]
-      })
-    );
+
+    if (!env.ssr) {
+      config.plugins.push(
+        new ImageminPlugin({
+          from: "./build/assets/**",
+          pngquant: {
+            quality: "60"
+          },
+          plugins: [
+            imageminMozjpeg({
+              quality: 50,
+              progressive: true
+            })
+          ]
+        })
+      );
+    }
+  }
+    
   return config;
 };

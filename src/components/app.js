@@ -6,8 +6,6 @@ import Header from "./header";
 // Code-splitting is automated for routes
 import Blogs from "../routes/blogs";
 import Blog from "../routes/blog";
-import Contact from "../routes/contact";
-import ContactSuccess from "../routes/contact-success";
 import NotFoundPage from "../routes/notfound";
 import { getLanguage, setLanguage } from "../i18n";
 import { setTheme, getTheme } from "../theme";
@@ -61,8 +59,6 @@ export default class App extends Component {
               <Router onChange={this.handleRoute}>
                 <Blogs path="/" />
                 <Blog path="/blog/:name" />
-                <Contact path="/contact/" />
-                <ContactSuccess path="/contact/success" />
                 <NotFoundPage type="404" default />
               </Router>
             </div>
