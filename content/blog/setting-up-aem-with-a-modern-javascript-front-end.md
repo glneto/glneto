@@ -1,12 +1,11 @@
 ---
 title: Setting up AEM with a modern javascript front end.
-date: 2020-04-30T03:00:28.441Z
+date: 2020-04-02T23:55:48.249Z
 subtitle: >-
   How to integrate your AEM components with modern javascript and using webpack
   dynamic imports.
-cover: ''
-tags: 'javascript, AEM'
+tags: 'javascript, AEM, step by step'
 ---
-1. 
+1.
 2.
 3.
