@@ -11,15 +11,12 @@ collections:
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string"}
-      - { 
-          label: "Language",
-          name: "language",
-          widget: "select",
-          options: {
-            - { label: "English", value: "en-US" }
-            - { label: "Portuguese", value: "pt-BR" }
-          }
-        }
+      - label: "Language"
+        name: "language"
+        widget: "select"
+        options:
+          - { label: "English", value: "en-US" }
+          - { label: "Portuguese", value: "pt-BR" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
       - { label: "Cover", name: "cover", widget: "image", required: false}
