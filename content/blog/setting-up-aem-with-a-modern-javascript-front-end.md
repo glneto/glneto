@@ -4,7 +4,7 @@ date: 2020-04-02T23:55:48.249Z
 subtitle: >-
   How to integrate your AEM components with modern javascript and using webpack
   dynamic imports.
-tags: 'javascript, AEM'
+tags: 'javascript, AEM, step by step'
 ---
 1.
 2.
