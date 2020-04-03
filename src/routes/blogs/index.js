@@ -31,12 +31,8 @@ function getBlogsListing(data, isLoading) {
                 <p class={style.subtitle}>{blog.details.subtitle}</p>
               )}
               <div>
-                {(
-                  blog.details.tags
-                    .substr(1, blog.details.tags.length - 2)
-                    .split(",") || []
-                ).map(tag => (
-                  <span class={style.tag}>{tag}</span>
+                {(blog.details.tags.split(",") || []).map(tag => (
+                  <span class={style.tag}>{tag.trim()}</span>
                 ))}
               </div>
             </article>
