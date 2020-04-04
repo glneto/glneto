@@ -27,13 +27,13 @@
   color: white;
 }
 
-.header nav {
+.header .social {
   font-size: 100%;
   display: flex;
   align-items: center;
 }
 
-.header nav a {
+.header .social a {
   display: inline-block;
   line-height: 1;
   text-align: center;
@@ -48,7 +48,7 @@
   font-weight: 700;
 }
 
-.header nav a .github {
+.header .social a .github {
   width: 32px;
   height: 32px;
 }
@@ -58,17 +58,17 @@
   height: 48px;
 }
 
-:global .app--dark :local(.header nav a) {
-  color: white
+:global .app--dark :local(.header .social a) {
+  color: white;
 }
 
-.header nav a:not(:last-child) {
+.header .social a:not(:last-child) {
   margin: 0 15px;
 }
 
-.header nav a:hover,
-.header nav a:active,
-.header nav a.active {
+.header .social a:hover,
+.header .social a:active,
+.header .social a.active {
   color: #ffc107;
 }
 
@@ -89,6 +89,10 @@
   justify-content: space-between;
 }
 
+.header .collapse {
+  display: none;
+}
+
 .header .personal h4 {
   margin: 0 3px;
   font-weight: 400;
@@ -96,7 +100,7 @@
 }
 
 :global .app--dark :local(.header .personal h4) {
-  color: white
+  color: white;
 }
 
 :global .react-toggle .react-toggle-thumb,
@@ -136,12 +140,173 @@
   top: 1px;
 }
 
-@media all and (max-width: 728px) {
-  .header h1 {
-    font-size: 2rem;
+@media only screen and (max-width: 728px) {
+  .header {
+    position: relative;
+    border-bottom-width: 1px;
+    height: 204px;
+    transition: height 0.6s ease-in-out, width 0.3s ease-in;
   }
-  .header nav a {
-    line-height: 100px;
-    margin: 0 8px;
+
+  .header .menu {
+    transition: margin-top 0.6s ease-in-out;
+  }
+
+  .header.collapsed .menu {
+    transition: margin-top 0.6s ease-in-out;
+  }
+
+  .header .topHeader {
+    display: inherit;
+    transition: all 1s ease-in-out;
+    text-align: left;
+  }
+
+  .header .personal h1 {
+    transition: font-size 0.6s;
+  }
+
+  .header .profilePicture img {
+    transition: width 1.2s ease-in-out, left 1s ease-in-out;
+    position: relative;
+    left: calc(50% - 50px);
+  }
+
+  .header.collapsed {
+    transition: height 0.6s ease-in-out, width 0.3s ease-in;
+  }
+
+  .header.collapsed .profilePicture img {
+    transition: width 0.6s ease-out, left 0.4s ease-in-out;
+  }
+
+  .header .personal h4 {
+    opacity: 1;
+    transition: opacity 0.4s;
+  }
+
+  .header .collapse {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 6px;
+    position: absolute;
+    cursor: pointer;
+    right: 20px;
+    bottom: 20px;
+    transform: rotate(-135deg);
+  }
+
+  .header:not(.collapsed) .collapse {
+    -webkit-animation: bounce 2s;
+    animation: bounce 2s;
+    transition: all 0.3s;
+  }
+
+  :global .app--dark :local(.header .collapse) {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+  }
+
+  .header .social {
+    display: none;
+  }
+
+  .header .personal {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header .languageToggle,
+  .header .themeToggle {
+    display: none;
+  }
+
+  .header.collapsed {
+    width: 100%;
+    height: 60px;
+    will-change: all;
+  }
+
+  .header.collapsed .profilePicture img {
+    width: 48px;
+    margin-left: 10px;
+    left: 10px;
+  }
+
+  .header.collapsed .personal h4 {
+    opacity: 0;
+  }
+
+  .header.collapsed .personal h1 {
+    font-size: 28px;
+  }
+
+  .header.collapsed .menu {
+    font-size: 16px;
+    margin-top: -70px;
+  }
+
+  .header.collapsed .collapse {
+    transform: rotate(45deg);
+    bottom: 30px;
+  }
+
+  .header.collapsed.ignoreTransitions .menu {
+    transition: none;
+  }
+
+  .header.ignoreTransitions .personal h4 {
+    transition: none;
+  }
+
+  .header.ignoreTransitions .personal h1 {
+    transition: none;
+  }
+}
+
+@-webkit-keyframes bounce {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    -webkit-transform: translateY(0) rotate(-135deg);
+    transform: translateY(0) rotate(-135deg);
+  }
+  40% {
+    -webkit-transform: translateY(-20px) rotate(-135deg);
+    transform: translateY(-20px) rotate(-135deg);
+  }
+  60% {
+    -webkit-transform: translateY(-12px) rotate(-135deg);
+    transform: translateY(-12px) rotate(-135deg);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    -webkit-transform: translateY(0) rotate(-135deg);
+    transform: translateY(0) rotate(-135deg);
+  }
+  40% {
+    -webkit-transform: translateY(-20px) rotate(-135deg);
+    transform: translateY(-20px) rotate(-135deg);
+  }
+  60% {
+    -webkit-transform: translateY(-12px) rotate(-135deg);
+    transform: translateY(-12px) rotate(-135deg);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .header {
+    width: 90%;
   }
 }
