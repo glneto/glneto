@@ -1,4 +1,6 @@
 const get = () => {
+  if (typeof window === "undefined") return "large";
+
   if (window.matchMedia("(min-width: 1281px)").matches) {
     return "large";
   } else if (window.matchMedia("(min-width: 729px)").matches) {
