@@ -15,6 +15,8 @@ import {
   getPreferredTheme,
 } from "../storage";
 import breakpoint from "../utils/breakpoint";
+import MobileMenu from "./mobileMenu";
+import Match from "preact-router/match";
 
 export const LanguageContext = createContext(getPreferredLanguage());
 export const ThemeContext = createContext(getPreferredTheme());
@@ -25,6 +27,7 @@ export default class App extends Component {
     language: getPreferredLanguage(),
     theme: getPreferredTheme(),
     breakpoint: breakpoint.get(),
+    hideMobileMenu: false
   };
 
   onResize = () => {
@@ -53,6 +56,14 @@ export default class App extends Component {
     setPreferredTheme(theme);
   };
 
+  onExpandHeader = () => {
+    this.setState({ hideMobileMenu: true });
+  };
+
+  onCollapseHeader = () => {
+    this.setState({ hideMobileMenu: false });
+  };
+
   componentDidMount() {
     window.addEventListener("resize", this.onResize);
   }
@@ -75,12 +86,21 @@ export default class App extends Component {
                 <Header
                   onLanguageChange={this.onLanguageChange}
                   onThemeChange={this.onThemeChange}
+                  onExpand={this.onExpandHeader}
+                  onCollapse={this.onCollapseHeader}
                 />
-                <Router onChange={this.handleRoute}>
-                  <Blogs path="/" />
-                  <Blog path="/blog/:name" />
-                  <NotFoundPage type="404" default />
-                </Router>
+                <main class={style.main}>
+                  <Router onChange={this.handleRoute}>
+                    <Blogs path="/" />
+                    <Blog path="/blog/:name" />
+                    <NotFoundPage type="404" default />
+                  </Router>
+                </main>
+                {breakpoint.checkSmall(this.state.breakpoint) && (
+                  <Match path="/blog/:name">
+                    {({ matches }) => <MobileMenu hide={!matches || this.state.hideMobileMenu} />}
+                  </Match>
+                )}
               </div>
             </BreakpointContext.Provider>
           </ThemeContext.Provider>

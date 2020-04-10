@@ -1,7 +1,19 @@
 :global .app--dark {
-    background-color: #333;
+  background-color: #333;
 }
 
 :global .app--dark .react-toggle .react-toggle-track {
-    border: solid 1px #C0C0C0;
+  border: solid 1px #c0c0c0;
+}
+
+.main {
+  flex: 1;
+  width: 50%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .main {
+    width: 90%;
+    overflow: auto;
+  }
 }

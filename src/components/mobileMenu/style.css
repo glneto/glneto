@@ -1,0 +1,74 @@
+.menuMobile {
+  height: 60px;
+  display: flex;
+  border-top: solid 1px rgba(200, 200, 200, 0.3);
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: -60px;
+}
+
+.menuMobileShow {
+  will-change: bottom;
+  animation: menuSlideIn 0.5s ease-out forwards;
+}
+
+.menuMobileHide {
+  will-change: bottom;
+  animation: menuSlideOut 0.5s ease-out forwards;
+}
+
+@keyframes menuSlideIn {
+  0% {
+    bottom: -60px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes menuSlideOut {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -60px;
+  }
+}
+
+.back {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 6px;
+  cursor: pointer;
+  transform: rotate(135deg);
+}
+
+.menuItem {
+  flex: 0.5;
+  border: none;
+  height: 100%;
+  line-height: 60px;
+  text-align: center;
+  display: flex;
+}
+
+.menuItem a {
+  height: 100%;
+  width: 100%;
+}
+
+.menuItem:not(:last-child) {
+  border-right: solid 1px rgba(200, 200, 200, 0.3);
+}
+
+:global .app--dark :local(.menuItem) {
+  color: white;
+}
+
+:global .app--dark :local(.back) {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+}

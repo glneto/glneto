@@ -3,11 +3,8 @@ import { Link } from "preact-router/match";
 import cx from "classnames";
 import style from "./style";
 import Profile from "../../assets/profile.jpeg";
-import NightIcon from "../../assets/night-icon.png";
-import SunIcon from "../../assets/sun-icon.png";
-import Toggle from "react-toggle";
 import i18n from "../../i18n";
-import { ThemeContext, LanguageContext, BreakpointContext } from "../app";
+import { ThemeContext, BreakpointContext } from "../app";
 import { useContext, useState } from "preact/hooks";
 
 import GithubIconLight from "../../assets/GitHub-Mark-Light-64px.png";
@@ -17,10 +14,11 @@ import TwitterLogoLight from "../../assets/Twitter-Logo-Light.png";
 import TwitterLogo from "../../assets/Twitter-Logo-Blue.png";
 import { getMenuCollapsed, setMenuCollapsed } from "../../storage";
 import breakpoint from "../../utils/breakpoint";
+import ThemeToggle from "../toggles/themeToggle";
+import LanguageToggle from "../toggles/languageToggle";
 
-const Header = ({ onLanguageChange, onThemeChange }) => {
+const Header = ({ onLanguageChange, onThemeChange, onExpand, onCollapse }) => {
   const theme = useContext(ThemeContext);
-  const language = useContext(LanguageContext);
   const breakpointValue = useContext(BreakpointContext);
   const isSmall = breakpoint.checkSmall(breakpointValue);
   const [ignoreTransitions, setIgnoreTransitions] = useState(true);
@@ -37,13 +35,7 @@ const Header = ({ onLanguageChange, onThemeChange }) => {
     >
       <div class={style.topHeader}>
         <div class={style.languageToggle}>
-          <Toggle
-            class="language"
-            defaultChecked={language === "en-US"}
-            aria-label="Toggle language"
-            icons={false}
-            onChange={onLanguageChange}
-          />
+          <LanguageToggle onLanguageChange={onLanguageChange} />
         </div>
         <Link href="/" class={style.profilePicture}>
           <img src={Profile} alt="Geraldo Neto's picture" />
@@ -52,35 +44,19 @@ const Header = ({ onLanguageChange, onThemeChange }) => {
           <i
             class={style.collapse}
             onClick={() => {
+              const willCollapse = !isCollapsed;
+
               setIgnoreTransitions(false);
               setMenuCollapsed(!isCollapsed);
               setCollapsed(!isCollapsed);
+
+              if (willCollapse && onCollapse) onCollapse();
+              else if (!willCollapse && onExpand) onExpand(); 
             }}
           />
         )}
         <div class={style.themeToggle}>
-          <Toggle
-            class="theme"
-            defaultChecked={theme === "light"}
-            aria-label="Toggle theme"
-            icons={{
-              checked: (
-                <img
-                  class={style.toggleIcon}
-                  src={SunIcon}
-                  alt="Sun (Light Theme)"
-                />
-              ),
-              unchecked: (
-                <img
-                  class={style.toggleIcon}
-                  src={NightIcon}
-                  alt="Moon (Dark Theme)"
-                />
-              ),
-            }}
-            onChange={onThemeChange}
-          />
+          <ThemeToggle toggleIconStyle={style.toggleIcon} onThemeChange={onThemeChange} />
         </div>
       </div>
       <div class={style.menu}>
