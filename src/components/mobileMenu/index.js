@@ -1,6 +1,7 @@
 import style from "./style.css";
 import MobileMenuItem from "./MenuItem";
 import cx from "classnames";
+import i18n from "../../i18n";
 
 const MobileMenu = ({ hide }) => {
   return (
@@ -12,7 +13,7 @@ const MobileMenu = ({ hide }) => {
     >
       <MobileMenuItem>
         <a href="/">
-          Back to Home
+          {i18n('back_to_home')}
           {/*<i class={style.back} />*/}
         </a>
       </MobileMenuItem>
