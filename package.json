@@ -39,7 +39,7 @@
     "classnames": "^2.2.6",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
-    "markdown-to-jsx": "^6.10.3",
+    "markdown-to-jsx": "^6.11.4",
     "parse-md": "^2.0.4",
     "preact": "^10.0.0",
     "preact-cli-plugin-netlify": "^1.5.0",
