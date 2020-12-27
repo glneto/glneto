@@ -31,6 +31,10 @@
   color: white;
 }
 
+:global .app--dark :local(a) {
+  color: white;
+}
+
 .blogbody pre code {
   display: block;
   max-width: 100%;

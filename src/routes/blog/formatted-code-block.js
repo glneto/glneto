@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 
-import { vs } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import style from "./style.css";
 
 export function FormattedCodeBlock(props) {
@@ -12,12 +12,13 @@ export function FormattedCodeBlock(props) {
   if (!props.class) {
     return <code class={style.inline}>{props.children}</code>;
   }
-  throw new Promise(resolve => {
+  throw new Promise((resolve) => {
     let language = null;
     const highlighter = import("react-syntax-highlighter/dist/esm/prism-light");
     let languageSyntax;
     switch (props.class) {
       case "lang-js":
+      case "lang-javascript":
         language = "javascript";
         languageSyntax = import(
           "react-syntax-highlighter/dist/esm/languages/prism/javascript"
@@ -48,8 +49,8 @@ export function FormattedCodeBlock(props) {
         );
         break;
     }
-    Promise.all([highlighter, languageSyntax]).then(values => {
-      const [SyntaxHighlighter, languageHighlighter] = values.map(m =>
+    Promise.all([highlighter, languageSyntax]).then((values) => {
+      const [SyntaxHighlighter, languageHighlighter] = values.map((m) =>
         m ? m.default : null
       );
       getFormattedCodeBlock(
@@ -74,7 +75,7 @@ function getFormattedCodeBlock(
 ) {
   language && SyntaxHighlighter.registerLanguage(language, languageHighlighter);
   setState(
-    <SyntaxHighlighter language={language} style={vs}>
+    <SyntaxHighlighter language={language} style={atomDark}>
       {props.children}
     </SyntaxHighlighter>
   );
