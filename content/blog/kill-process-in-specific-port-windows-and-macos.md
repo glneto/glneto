@@ -22,7 +22,7 @@ Here's a quick way to kill any process that's running in a specific port:
 1. Open **terminal**
 2. Type **sudo lsof -i -P -n | grep LISTEN**
 3. Second argument will be the process id.
-4. Copy it and run **kill <Enter process id here>**
+4. Copy it and run **kill <*Enter process id here*>**
 
 ### Automating (for MacOS)
 
