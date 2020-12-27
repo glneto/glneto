@@ -20,7 +20,8 @@ Also, if you are already using GraphQL (I assume you are), Apollo has a nice way
 
 #### How?
 
-With Apollo 3, you can use [Reactive Variables](https://www.apollographql.com/docs/react/local-state/reactive-variables/)\
+With Apollo 3, you can use [Reactive Variables](https://www.apollographql.com/docs/react/local-state/reactive-variables/)
+
 With Apollo 2.x, you can use [Local Resolvers](https://www.apollographql.com/docs/react/v2/data/local-state/)
 
 #### Reactive variables
