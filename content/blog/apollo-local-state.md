@@ -33,17 +33,20 @@ The only thing you have to do is use the **makeVar** function available in **@ap
 ```javascript
 import { makeVar } from '@apollo/client';
 const sharedValue = makeVar('initial value');
+export { sharedValue }
 ```
 
 Simple as that, you can now access your value using:
 
-```
+```javascript
+import { sharedValue } from '../local-state/shared-value';
 sharedValue()
 ```
 
 And you can modify it using:
 
-```
+```javascript
+import { sharedValue } from '../local-state/shared-value';
 sharedValue(newValue)
 ```
 
@@ -51,7 +54,7 @@ Ok, that's great, but the thing is: it's not very intuitive, right? It's not how
 
 So here's a **suggestion**:
 
-```
+```javascript
 import { makeVar } from '@apollo/client';
 
 // Create the reactive variable. It should be global
@@ -68,7 +71,7 @@ export { useSharedValue }
 
 Now you can import and read/write to sharedValue in any component, like a shared useState call:
 
-```
+```javascript
 import React from 'react';
 import { useSharedValue } from '../local-state/shared-value';
 
@@ -80,9 +83,3 @@ const MyComponent = () => {
   </button>
 }
 ```
-
-
-
-#### Local Resolvers
-
-Explanation
