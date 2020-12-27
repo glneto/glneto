@@ -113,6 +113,8 @@ export { useSharedValue }
 
 Done, now any change will be broadcasted and trigger a re-render only to the components that are listening to that specific reactive variable.
 
+> **Note:**
+>
 > Those reactive vars can even be objects - **but be careful:** mutating an object property won't broadcast the changes since the object reference will still be the same and changes to properties won't be detected by Apollo. You can use Immutable library solutions to control this behavior (or just don't use objects) :)
 
 Hope you enjoyed it!
