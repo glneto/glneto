@@ -6,6 +6,7 @@ subtitle: An architecture suggestion for local state fields with Apollo Client 3
 tags: apollo, graphql, local state, reactive, variables, vars
 ---
 #### Why?
+
 Using Apollo Local State can be useful to avoid having to add new State management libraries (i.e.: Redux) to your project. **Its not a robust state management solution, but it can replace Redux in simple apps.**
 
 #### When not to?
@@ -26,7 +27,61 @@ With Apollo 2.x, you can use [Local Resolvers](https://www.apollographql.com/doc
 
 #### Reactive variables
 
-Explanation
+Local state management became really simple since the introduction of Reactive variables.
+The only thing you have to do is use the **makeVar** function available in **@apollo/client library**.
+
+```javascript
+import { makeVar } from '@apollo/client';
+const sharedValue = makeVar('initial value');
+```
+
+Simple as that, you can now access your value using:
+
+```
+sharedValue()
+```
+
+And you can modify it using:
+
+```
+sharedValue(newValue)
+```
+
+Ok, that's great, but the thing is: it's not very intuitive, right? It's not how React does with useState and it feels weird to have different patterns for setting and reading values across our code.
+
+So here's a **suggestion**:
+
+```
+import { makeVar } from '@apollo/client';
+
+// Create the reactive variable. It should be global
+// and should only be instantiated once in your code, otherwise
+// you will be creating a new reference. That's why it's not a part
+// of the hook code.
+const sharedValue = makeVar('initial value');
+
+// This is the public part. This is how our components will
+// use our reactive variable.
+const useSharedValue = () => [sharedValue(), sharedValue]
+export { useSharedValue }
+```
+
+Now you can import and read/write to sharedValue in any component, like a shared useState call:
+
+```
+import React from 'react';
+import { useSharedValue } from '../local-state/shared-value';
+
+const MyComponent = () => {
+  const [sharedValue, setSharedValue] = useSharedValue();
+
+  return <button onClick={() => setSharedValue('Changed')}>
+    {sharedValue}
+  </button>
+}
+```
+
+
 
 #### Local Resolvers
 
