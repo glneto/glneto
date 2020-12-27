@@ -42,6 +42,12 @@ export function FormattedCodeBlock(props) {
           "react-syntax-highlighter/dist/esm/languages/prism/typescript"
         );
         break;
+      case "lang-shell":
+        language = "shell";
+        languageSyntax = import(
+          "react-syntax-highlighter/dist/esm/languages/prism/shell-session"
+        );
+        break;
       default:
         language = "markdown";
         languageSyntax = import(

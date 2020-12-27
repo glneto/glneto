@@ -30,13 +30,13 @@ const Header = ({ onLanguageChange, onThemeChange, onExpand, onCollapse }) => {
     <header
       class={cx(style.header, {
         [style.collapsed]: !!isCollapsed,
-        [style.ignoreTransitions]: ignoreTransitions
+        [style.ignoreTransitions]: ignoreTransitions,
       })}
     >
       <div class={style.topHeader}>
-        <div class={style.languageToggle}>
+        {/*<div class={style.languageToggle}>
           <LanguageToggle onLanguageChange={onLanguageChange} />
-        </div>
+        </div>*/}
         <Link href="/" class={style.profilePicture}>
           <img src={Profile} alt="Geraldo Neto's picture" />
         </Link>
@@ -51,12 +51,15 @@ const Header = ({ onLanguageChange, onThemeChange, onExpand, onCollapse }) => {
               setCollapsed(!isCollapsed);
 
               if (willCollapse && onCollapse) onCollapse();
-              else if (!willCollapse && onExpand) onExpand(); 
+              else if (!willCollapse && onExpand) onExpand();
             }}
           />
         )}
         <div class={style.themeToggle}>
-          <ThemeToggle toggleIconStyle={style.toggleIcon} onThemeChange={onThemeChange} />
+          <ThemeToggle
+            toggleIconStyle={style.toggleIcon}
+            onThemeChange={onThemeChange}
+          />
         </div>
       </div>
       <div class={style.menu}>
