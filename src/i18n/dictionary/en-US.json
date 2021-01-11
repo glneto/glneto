@@ -2,5 +2,9 @@
     "profession": "Software engineer",
     "about": "About",
     "contact": "Contact",
-    "back_to_home": "Back to home"
+    "back_to_home": "Back to home",
+    "blogs": "blogs",
+    "quick_tips": "quick tips",
+    "refactor_zone": "refactor zone",
+    "go_to": "Go to..."
 }

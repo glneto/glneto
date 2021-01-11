@@ -41,7 +41,7 @@ function getBlogsListing(data, isLoading, language) {
                 {blog.details.subtitle && (
                   <p class={style.subtitle}>{blog.details.subtitle}</p>
                 )}
-                <div>
+                <div class={style.tagList}>
                   {(blog.details.tags.split(",") || []).map(tag => (
                     <span class={style.tag}>{tag.trim()}</span>
                   ))}

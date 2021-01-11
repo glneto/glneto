@@ -1,6 +1,7 @@
 {
-    "rules": {
-        "no-tabs": "error",
-        "no-mixed-spaces-and-tabs":"error"
-    }
+  "rules": {
+    "no-tabs": "error",
+    "no-mixed-spaces-and-tabs": "error"
+  },
+  "plugins": ["eslint-react-plugin"]
 }

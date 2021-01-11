@@ -55,7 +55,7 @@ h2 {
 }
 
 :global .app--dark :local(.subtitle) {
-  color: #CCC;
+  color: #ccc;
 }
 
 .loadingPlaceholder .blogtitle {
@@ -79,6 +79,24 @@ h2 {
   width: 65%;
 }
 
+.pageBlogs {
+  animation: slide-up-fade-in ease 1s;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-up-fade-in {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
 @media all and (max-width: 728px) {
   .preview {
     width: 100%;
@@ -86,5 +104,9 @@ h2 {
 
   .pageBlogs {
     margin-top: 20px;
+  }
+
+  .tagList {
+    display: none;
   }
 }

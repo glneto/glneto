@@ -27,7 +27,7 @@ export default class App extends Component {
     language: getPreferredLanguage(),
     theme: getPreferredTheme(),
     breakpoint: breakpoint.get(),
-    hideMobileMenu: false
+    hideMobileMenu: false,
   };
 
   onResize = () => {
@@ -64,6 +64,14 @@ export default class App extends Component {
     this.setState({ hideMobileMenu: false });
   };
 
+  onExpandMobileMenu = () => {
+    this.setState({ hideHeader: true });
+  };
+
+  onCollapseMobileMenu = () => {
+    this.setState({ hideHeader: false });
+  };
+
   componentDidMount() {
     window.addEventListener("resize", this.onResize);
   }
@@ -88,6 +96,7 @@ export default class App extends Component {
                   onThemeChange={this.onThemeChange}
                   onExpand={this.onExpandHeader}
                   onCollapse={this.onCollapseHeader}
+                  hide={this.state.hideHeader}
                 />
                 <main class={style.main}>
                   <Router onChange={this.handleRoute}>
@@ -97,9 +106,11 @@ export default class App extends Component {
                   </Router>
                 </main>
                 {breakpoint.checkSmall(this.state.breakpoint) && (
-                  <Match path="/blog/:name">
-                    {({ matches }) => <MobileMenu hide={!matches || this.state.hideMobileMenu} />}
-                  </Match>
+                  <MobileMenu
+                    onExpand={this.onExpandMobileMenu}
+                    onCollapse={this.onCollapseMobileMenu}
+                    hide={this.state.hideMobileMenu}
+                  />
                 )}
               </div>
             </BreakpointContext.Provider>

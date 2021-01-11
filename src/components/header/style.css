@@ -234,7 +234,6 @@
   .header.collapsed {
     width: 100%;
     height: 60px;
-    will-change: all;
   }
 
   .header.collapsed .profilePicture img {
