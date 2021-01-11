@@ -37,7 +37,7 @@ const MobileMenu = ({ hide, onCollapse, onExpand }) => {
               <i class={style.collapse} onClick={onToggle} />
               {isCollapsed && (
                 <MobileMenuItem>
-                  <a href="/" onClick={onToggle}>
+                  <a href="#" onClick={onToggle}>
                     {i18n("go_to")}
                   </a>
                 </MobileMenuItem>
