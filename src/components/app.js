@@ -102,6 +102,8 @@ export default class App extends Component {
                   <Router onChange={this.handleRoute}>
                     <Blogs path="/" />
                     <Blog path="/blog/:name" />
+                    <Blogs path="/quick-tips" />
+                    <Blog path="/quick-tips/:name" />
                     <NotFoundPage type="404" default />
                   </Router>
                 </main>

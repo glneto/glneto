@@ -3,7 +3,7 @@ const { join } = require("path");
 const fs = require("fs");
 const parseMD = require("parse-md").default;
 
-const [blogs] = generateFileList(join(__dirname, "content")).nodes;
+const [blogs,quickTips] = generateFileList(join(__dirname, "content")).nodes;
 module.exports = () => {
   const pages = [
     {
@@ -20,6 +20,11 @@ module.exports = () => {
   pages.push({
     url: "/",
     data: blogs
+  });
+
+  pages.push({
+    url: "/quick-tips",
+    data: quickTips
   });
 
   // adding all blog pages
