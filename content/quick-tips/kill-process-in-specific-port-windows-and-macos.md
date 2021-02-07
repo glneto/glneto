@@ -31,8 +31,8 @@ What about creating a function so you can call simply: **killport 3000**?
 
 How to do that:
 
-1. Open **terminal**\
-2. Run **touch ~/.bash_profile** (If you don't have a bash profile created yet)\
+1. Open **terminal**
+2. Run **touch ~/.bash_profile** (If you don't have a bash profile created yet)
 3. Run **vim ~/.bash_profile**
 4. Add to the file:
 
