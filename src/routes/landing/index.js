@@ -4,7 +4,7 @@ import Section from "./section";
 import LatestPost from "./latest-post";
 
 const landing = (props) => {
-  const [{ data }] = usePrerenderData(props);
+  const [{ data = {} }] = usePrerenderData(props);
 
   return (
     <Landing
