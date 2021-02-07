@@ -45,17 +45,17 @@ const MobileMenu = ({ hide, onCollapse, onExpand }) => {
               {!isCollapsed && (
                 <div className={cx(style.menuItemsList)}>
                   <MobileMenuItem>
-                    <a href="/" onClick={onToggle}>
-                      {i18n("blogs")}
+                    <a href="/articles" onClick={onToggle}>
+                      {i18n("articles")}
                     </a>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <a href="/quicktips" onClick={onToggle}>
+                    <a href="/quick-tips" onClick={onToggle}>
                       {i18n("quick_tips")}
                     </a>
                   </MobileMenuItem>
                   <MobileMenuItem>
-                    <a href="/refactorzone" onClick={onToggle}>
+                    <a href="/refactor-zone" onClick={onToggle}>
                       {i18n("refactor_zone")}
                     </a>
                   </MobileMenuItem>

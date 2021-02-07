@@ -3,54 +3,80 @@ const { join } = require("path");
 const fs = require("fs");
 const parseMD = require("parse-md").default;
 
-const [blogs,quickTips] = generateFileList(join(__dirname, "content")).nodes;
+const [blogs, images, quickTips, refactorZone] = generateFileList(
+  join(__dirname, "content")
+).nodes;
 module.exports = () => {
   const pages = [
     {
       url: "/",
       seo: {
-        cover: "/assets/profile.jpeg"
-      }
-    },
-    { url: "/contact/" },
-    { url: "/contact/success" }
+        cover: "/assets/profile.jpeg",
+      },
+    }
   ];
 
   // adding blogs list posts page
   pages.push({
     url: "/",
-    data: blogs
+    data: {
+      articles: blogs.edges,
+      quickTips: quickTips.edges,
+      refactorZone: refactorZone.edges
+    },
+  });
+
+  pages.push({
+    url: "/articles",
+    data: blogs,
   });
 
   pages.push({
     url: "/quick-tips",
-    data: quickTips
+    data: quickTips,
+  });
+
+  pages.push({
+    url: "/refactor-zone",
+    data: refactorZone,
   });
 
   // adding all blog pages
   pages.push(
-    ...blogs.edges.map(blog => {
-      let data;
-      if (blog.format === "md") {
-        const { content } = parseMD(
-          fs.readFileSync(join("content", "blog", blog.id), "utf-8")
-        );
-        data = content;
-      } else {
-        data = fs
-          .readFileSync(join("content", "blog", blog.id), "utf-8")
-          .replace(/---(.*(\r)?\n)*---/, "");
-      }
-      return {
-        url: `/blog/${blog.id}`,
-        seo: blog.details,
-        data: {
-          details: blog.details,
-          content: data
-        }
-      };
-    })
+    ...getEdgePages(blogs.edges, "articles", "blog"),
+    ...getEdgePages(quickTips.edges, "quick-tips"),
+    ...getEdgePages(refactorZone.edges, "refactor-zone")
   );
 
   return pages;
+};
+
+const getEdgePages = (edges, baseUrlName, folderName) => {
+  return (edges || []).map((edge) => {
+    let data;
+    if (edge.format === "md") {
+      const { content } = parseMD(
+        fs.readFileSync(
+          join("content", folderName || baseUrlName, edge.id),
+          "utf-8"
+        )
+      );
+      data = content;
+    } else {
+      data = fs
+        .readFileSync(
+          join("content", folderName || baseUrlName, edge.id),
+          "utf-8"
+        )
+        .replace(/---(.*(\r)?\n)*---/, "");
+    }
+    return {
+      url: `/${baseUrlName}/${edge.id}`,
+      seo: edge.details,
+      data: {
+        details: edge.details,
+        content: data,
+      },
+    };
+  });
 };

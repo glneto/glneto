@@ -40,4 +40,22 @@ collections:
       - { label: "Cover", name: "cover", widget: "image", required: false}
       - { label: "Tags", name: "tags", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown"}
+  - name: "refactorZone"
+    label: "Refactor Zone"
+    label_singular: "Refactor Example" # Used in the UI, ie: "New Post"
+    folder: "content/refactor-zone"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string"}
+      - label: "Language"
+        name: "language"
+        widget: "select"
+        options:
+          - { label: "English", value: "en-US" }
+          - { label: "Portuguese", value: "pt-BR" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Cover", name: "cover", widget: "image", required: false}
+      - { label: "Tags", name: "tags", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown"}
 

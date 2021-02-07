@@ -58,11 +58,12 @@ code.inline {
   max-width: none;
   background: #ddd;
   padding: 0px 4px;
+  word-wrap: break-word;
+  overflow-x: none;
 }
 
 .blogbody pre pre {
   max-width: 100%;
-  overflow: scroll;
   color: rgb(57, 58, 52);
   font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier;
   direction: ltr;
@@ -79,6 +80,16 @@ code.inline {
   overflow: auto;
   border: 1px solid rgb(221, 221, 221);
   background-color: white;
+}
+
+@media all and (max-width: 728px) {
+  .blogbody pre pre {
+    min-height: 100px;
+  }
+
+  .blogbody pre pre code {
+    min-height: 100px;
+  }
 }
 
 .blogsubtitle {

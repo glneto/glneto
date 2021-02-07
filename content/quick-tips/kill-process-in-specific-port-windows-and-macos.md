@@ -26,7 +26,7 @@ Here's a quick way to kill any process that's running in a specific port:
 
 ### Automating (for MacOS)
 
-Do you need to run this often?\
+Do you need to run this often?
 What about creating a function so you can call simply: **killport 3000**?
 
 How to do that:

@@ -17,6 +17,7 @@ import {
 import breakpoint from "../utils/breakpoint";
 import MobileMenu from "./mobileMenu";
 import Match from "preact-router/match";
+import Landing from "../routes/landing";
 
 export const LanguageContext = createContext(getPreferredLanguage());
 export const ThemeContext = createContext(getPreferredTheme());
@@ -100,10 +101,13 @@ export default class App extends Component {
                 />
                 <main class={style.main}>
                   <Router onChange={this.handleRoute}>
-                    <Blogs path="/" />
-                    <Blog path="/blog/:name" />
+                    <Landing path="/" />
+                    <Blogs path="/articles" />
+                    <Blog path="/articles/:name" />
                     <Blogs path="/quick-tips" />
                     <Blog path="/quick-tips/:name" />
+                    <Blogs path="/refactor-zone" />
+                    <Blog path="/refactor-zone/:name" />
                     <NotFoundPage type="404" default />
                   </Router>
                 </main>

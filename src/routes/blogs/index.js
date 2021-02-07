@@ -11,12 +11,12 @@ const blogs = props => {
 
   return (
     <div class={style.pageBlogs}>
-      {getBlogsListing(data, isLoading, language)}
+      {getBlogsListing(data, isLoading, language, props.path)}
     </div>
   );
 };
 
-function getBlogsListing(data, isLoading, language) {
+function getBlogsListing(data, isLoading, language, path) {
   if (isLoading) {
     return (
       <article class={style.loadingPlaceholder}>
@@ -32,10 +32,10 @@ function getBlogsListing(data, isLoading, language) {
     const { data: blogs } = data;
     return (
       <>
-        {blogs.edges
+        {(blogs.edges || [])
           .filter(blog => blog.details.language === language)
           .map(blog => (
-            <Link href={`/blog/${blog.id}`}>
+            <Link href={`${path}/${blog.id}`}>
               <article class={style.article}>
                 <h2>{blog.details.title}</h2>
                 {blog.details.subtitle && (
