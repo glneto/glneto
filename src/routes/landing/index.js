@@ -32,7 +32,7 @@ const Landing = ({ articles, quickTips, refactorZone }) => {
           link={`/quick-tips/${quickTips[0].id}`}
         />
       </Section>}
-      {refactorZone && <Section path={`/refactor-zone`} text="Refactor Zone" />}
+      {false && refactorZone && <Section path={`/refactor-zone`} text="Refactor Zone" />}
     </div>
   );
 };

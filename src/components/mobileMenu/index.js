@@ -54,11 +54,11 @@ const MobileMenu = ({ hide, onCollapse, onExpand }) => {
                       {i18n("quick_tips")}
                     </a>
                   </MobileMenuItem>
-                  <MobileMenuItem>
+                  {false && <MobileMenuItem>
                     <a href="/refactor-zone" onClick={onToggle}>
                       {i18n("refactor_zone")}
                     </a>
-                  </MobileMenuItem>
+                  </MobileMenuItem>}
                 </div>
               )}
             </>
