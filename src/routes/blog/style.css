@@ -50,7 +50,7 @@
   line-height: 1.2em;
   tab-size: 4;
   hyphens: none;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 code.inline {
